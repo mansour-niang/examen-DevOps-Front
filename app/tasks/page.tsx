@@ -1,12 +1,12 @@
 import Link from 'next/link';
 import { getTasks } from '@/lib/api';
-import TaskCard from '@/components/TaskCard';
+import KanbanBoard from '@/components/kanban/KanbanBoard';
 
 export default async function TasksPage() {
   const tasks = await getTasks();
 
   return (
-    <main className="max-w-5xl mx-auto p-6">
+    <main className="max-w-6xl mx-auto p-6">
       <div className="flex justify-between items-center mb-8">
         <h1 className="text-3xl font-bold text-zinc-900 tracking-tight">Tâches</h1>
         <Link
@@ -25,11 +25,7 @@ export default async function TasksPage() {
           </Link>
         </div>
       ) : (
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          {tasks.map((task) => (
-            <TaskCard key={task.id} task={task} />
-          ))}
-        </div>
+        <KanbanBoard tasks={tasks} />
       )}
     </main>
   );
