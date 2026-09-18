@@ -102,7 +102,8 @@ jobs:
             HEALTHY="false"
             for i in 1 2 3 4 5; do
               sleep 3
-              CODE=$(docker exec "$CONTAINER" wget -qO- -T 2 --max-redirect=0 --server-response http://127.0.0.1:3000 2>&1 | grep "HTTP/" | awk '{print $2}' || echo "000")
+              CODE=$(docker exec "$CONTAINER" wget -qO- -T 2 --server-response http://127.0.0.1:3000 2>&1 | grep "HTTP/" | tail -n1 | awk '{print $2}')
+              CODE="${CODE:-000}"
               if [ "$CODE" -ge 200 ] && [ "$CODE" -lt 400 ]; then
                 HEALTHY="true"
                 break
