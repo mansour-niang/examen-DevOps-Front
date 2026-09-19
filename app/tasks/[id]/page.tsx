@@ -1,6 +1,7 @@
 'use client';
 import { useState, useEffect } from 'react';
 import { useParams } from 'next/navigation';
+import Link from 'next/link';
 import { getTask, updateTask, Task } from '@/lib/api';
 import TaskForm from '@/components/TaskForm';
 import DeleteButton from '@/components/DeleteButton';
@@ -18,11 +19,17 @@ export default function TaskDetailPage() {
 
   return (
     <main className="max-w-xl mx-auto p-6">
-      <div className="flex justify-between items-center mb-6">
-        <h1 className="text-2xl font-bold text-zinc-900 tracking-tight">Modifier la tâche</h1>
+      <div className="mb-4 flex items-center justify-between">
+        <Link
+          href="/tasks"
+          className="inline-flex items-center gap-1 text-sm font-medium text-zinc-500 hover:text-violet-600"
+        >
+          ← Retour aux tâches
+        </Link>
         <DeleteButton id={task.id} />
       </div>
       <TaskForm
+        heading="Modifier la tâche"
         defaultValues={{
           title: task.title,
           description: task.description ?? '',
