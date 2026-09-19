@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="fr">
-      <body className={`${inter.className} bg-[#fafafa] min-h-screen`}>
+      <body className={`${inter.className} min-h-screen`}>
         <nav className="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-zinc-200 px-6 py-3.5">
           <a href="/tasks" className="inline-flex items-center gap-2.5 group">
             <span className="flex h-8 w-8 items-center justify-center rounded-xl bg-zinc-900 text-white shadow-sm shadow-zinc-900/20 transition-transform group-hover:scale-105">
